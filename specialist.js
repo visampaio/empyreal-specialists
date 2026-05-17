@@ -25,7 +25,7 @@ let engineers = [
     },
     {
         name: "Garek Tesias",
-        src: "./img/garel_tesias.png",
+        src: "./img/garek_tesias.png",
         desc: "Swap the position of two Spellcars on your folio or move one to an empty slot. (You may move a Spellcar into the thrid row of your railyard this way even if you have not filled the second.)",
         isBanned: false
     },
@@ -258,8 +258,8 @@ let surveyors = [
 
 let stationMasters = [
     {
-        name: "Casparan Kellovic",
-        src: "./img/casparan_kellovic.png",
+        name: "Casparan Kellovich",
+        src: "./img/casparan_kellovich.png",
         desc: "Each time you Build Track on the edge of the map, Reclaim two Mana.",
         isBanned: false
     },
@@ -271,7 +271,7 @@ let stationMasters = [
     },
     {
         name: "Iain Bergham",
-        src: "./img/iain_berham.png",
+        src: "./img/iain_bergham.png",
         desc: "",
         isBanned: false
     },
