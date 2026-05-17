@@ -2,8 +2,9 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Empyreal Specialists App</title>
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <div id="startDiv">
@@ -18,9 +19,12 @@
     </div>
 
     <div id="specialistList">
-        <div id="engineerList"></div>
-        <div id="surveyorList"></div>
-        <div id="stationMasterList"></div>
+        <button class="accordion">Engineers</button>
+        <div id="engineerList" class="cardDisplay"></div>
+        <button class="accordion">Surveyors</button>
+        <div id="surveyorList" class="cardDisplay"></div>
+        <button class="accordion">Station Masters</button>
+        <div id="stationMasterList" class="cardDisplay"></div>
     </div>
 
     <script src="specialist.js"></script>
