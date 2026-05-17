@@ -6,6 +6,22 @@
     <link rel="stylesheet" href="">
   </head>
   <body>
+    <div id="startDiv">
+        <label for="numPlayers">Select number of players:</label>
+        <select name="numPlayers" id="numPlayers">
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <button id="startGame">Start</button>
+    </div>
+
+    <div id="specialistList">
+        <div id="engineerList"></div>
+        <div id="surveyorList"></div>
+        <div id="stationMasterList"></div>
+    </div>
 
     <script src="specialist.js"></script>
     <script src="setup.js"></script>
