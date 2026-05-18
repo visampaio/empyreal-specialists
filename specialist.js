@@ -21,7 +21,8 @@ let engineers = [
         name: "Aerlion",
         src: "./img/aerlion.png",
         desc: "Place Wasteland. During this turn, you may Transfer through it for free.",
-        isBanned: false
+        isBanned: false,
+        aggression: "medium"
     },
     {
         name: "Garek Tesias",
@@ -81,7 +82,8 @@ let engineers = [
         name: "Malandrax Mecchi",
         src: "./img/malandrax_mecchi.png",
         desc: "Pay one Crystal to choose an In-Network hex. Move a Good from an adjacent hex into that hex.",
-        isBanned: false
+        isBanned: false,
+        aggression: "medium"
     },
     {
         name: "Rixia Van Sorrel",
@@ -144,7 +146,8 @@ let surveyors = [
         name: "Cin Atalar",
         src: "./img/cin_atalar.png",
         desc: "Choose a hex in your Network. Move all Goods from adjacent hexes into that hex.",
-        isBanned: false
+        isBanned: false,
+        aggression: "high"
     },
     {
         name: "Almir Nol Kanda",
@@ -173,7 +176,7 @@ let surveyors = [
     {
         name: "Arianna Tzaar",
         src: "./img/arianna_tzaar.png",
-        desc: "Draw three Awards from the supply. You may choose one and put it",
+        desc: "Draw three Awards from the supply. You may choose one and put it into play. (Return the other two to the supply.) The chosen Awaard is scored the same as the two drawn at the beggining of the game.",
         isBanned: false
     },
     {
@@ -186,7 +189,8 @@ let surveyors = [
         name: "Ariel Malephaise",
         src: "./img/ariel_malephaise.png",
         desc: "Choose a hex in your Network. Remove all train cars (including your own) in that hex and adjacent hexes from the map and return them to their Company's supply.",
-        isBanned: false
+        isBanned: false,
+        aggression: "high"
     },
     {
         name: "Hydeart Burnstein",
@@ -216,7 +220,8 @@ let surveyors = [
         name: "Telemyr",
         src: "./img/telemyr.png",
         desc: "Permanently swap your Captain, Engineer, or Station Master with another player's. If the Specialist you take was exhausted, Refresh it.",
-        isBanned: false
+        isBanned: false,
+        aggression: "medium"
     },
     {
         name: "Marigold",
@@ -240,7 +245,8 @@ let surveyors = [
         name: "Wardlaw O'Brien",
         src: "./img/wardlaw_obrien.png",
         desc: "",
-        isBanned: false
+        isBanned: false,
+        aggression: "medium"
     },
     {
         name: "Mindra Dirac",
@@ -291,7 +297,8 @@ let stationMasters = [
         name: "Dareios Kuel",
         src: "./img/dareios_kuel.png",
         desc: "",
-        isBanned: false
+        isBanned: false,
+        aggression: "high"
     },
     {
         name: "Leto Fulgore",
@@ -303,13 +310,15 @@ let stationMasters = [
         name: "Feylana Chorgitz",
         src: "./img/feylana_chorgitz.png",
         desc: "",
-        isBanned: false
+        isBanned: false,
+        aggression: "medium"
     },
     {
         name: "Lucca Turlotte",
         src: "./img/lucca_turlotte.png",
         desc: "",
-        isBanned: false
+        isBanned: false,
+        aggression: "high"
     },
     {
         name: "Nicomedes An'sige",
@@ -321,7 +330,8 @@ let stationMasters = [
         name: "Tegusgan",
         src: "./img/tegusgan.png",
         desc: "",
-        isBanned: false
+        isBanned: false,
+        aggression: "high"
     },
     {
         name: "Peril",
