@@ -1,17 +1,38 @@
 const numPlayers = document.getElementById("numPlayers");
 const startDiv = document.getElementById("startDiv");
 const start = document.getElementById("startGame");
-const engineerList = document.getElementById("engineerList");
-const surveyorList = document.getElementById("surveyorList");
-const stationMasterList = document.getElementById("stationMasterList");
+const specialistList = document.getElementById("specialistList");
 const modal = document.getElementById("modal");
+let gameDeck = [];
+let removedDeck = [];
 let cardInfo = document.getElementsByClassName("cardInfo");
 let selectYes = document.getElementById("selectYes");
 
 start.addEventListener("click", function() {
-    engineerList.innerHTML = displayDeck(createDeck(engineers));
-    surveyorList.innerHTML = displayDeck(createDeck(surveyors));
-    stationMasterList.innerHTML = displayDeck(createDeck(stationMasters));
+    createDeck(engineers);
+    createDeck(surveyors);
+    createDeck(stationMasters);
+    createDisplay();
+});
+
+function createDeck(array) {
+    let list = structuredClone(array);
+
+    for (let i=0; i< Number(numPlayers.value)+1;) {
+        let j = Math.floor(Math.random() * list.length);
+        let cardPicked = list[j];
+        if (!cardPicked.isBanned) {
+            gameDeck.push(cardPicked);
+            list.splice(j, 1);
+            i++;
+        }
+    }
+}
+
+function createDisplay(){
+    specialistList.innerHTML = displayDeck(gameDeck, "Engineers");
+    specialistList.innerHTML += displayDeck(gameDeck, "Surveyors");
+    specialistList.innerHTML += displayDeck(gameDeck, "Station Masters");
     startDiv.style.display = "none";
     for (let i=0; i < cardInfo.length; i++) {
         cardInfo[i].addEventListener("click", function() {
@@ -19,42 +40,40 @@ start.addEventListener("click", function() {
             selectYes.dataset.target = this.dataset.name;
         });
     }
-});
+    // Original code from https://www.w3schools.com/howto/howto_js_accordion.asp
+    let accordions = document.getElementsByClassName("accordion");
 
-function createDeck(list) {
-    let pickedList = [];
-
-    for (let i=0; i< Number(numPlayers.value)+1;) {
-        let j = Math.floor(Math.random() * list.length);
-        let cardPicked = list[j];
-        if (!cardPicked.isBanned) {
-            pickedList.push(cardPicked);
-            list.splice(j, 1);
-            i++;
-        }
+    for (let i = 0; i < accordions.length; i++) {
+        accordions[i].addEventListener("click", function () {
+            for (let i = 0; i < accordions.length; i++) {
+                accordions[i].style.display = "none";
+            }
+            let panel = this.nextElementSibling;
+            toggleAccordion(panel);
+        });
     }
-
-    return pickedList;
 }
 
-function displayDeck(list) {
-    let string = "";
+function displayDeck(list, type) {
+    let string = `<button class="accordion">${type}</button><div class="cardDisplay">`;
       for (let z=0; z < list.length; z++) {
-        string += `
+        if (list[z].type == type) {
+            string += `
         <div class="cardInfo" data-name="${list[z].name}"><img src=${list[z].src}><p>${list[z].desc}</p></div>`
+        }
       }
       return string;
 }
 
 selectYes.addEventListener("click", function() {
     modal.style.display = "none";
-    for (let i=0; i < cardInfo.length; i++) {
-        if (cardInfo[i].dataset.name == this.dataset.target) {
-            let panel = cardInfo[i].parentElement;
-            toggleAccordion(panel);
-            cardInfo[i].remove();
+    for (let i=0; i < gameDeck.length; i++) {
+        if (gameDeck[i].name == this.dataset.target) {
+            removedDeck.push(gameDeck[i]);
+            gameDeck.splice(i, 1);
         }
     }
+    createDisplay();
 });
 
 document.getElementById("selectNo").addEventListener("click", function() {
@@ -67,16 +86,6 @@ window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
-} 
-
-// Original code from https://www.w3schools.com/howto/howto_js_accordion.asp
-let accordions = document.getElementsByClassName("accordion");
-
-for (let i = 0; i < accordions.length; i++) {
-  accordions[i].addEventListener("click", function() {
-    let panel = this.nextElementSibling;
-    toggleAccordion(panel);
-  });
 } 
 
 function toggleAccordion(panel){
