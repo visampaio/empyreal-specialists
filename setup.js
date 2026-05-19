@@ -38,6 +38,8 @@ function createDisplay(){
         cardInfo[i].addEventListener("click", function() {
             modal.style.display = "block";
             selectYes.dataset.target = this.dataset.name;
+            document.getElementById("cardName").textContent = this.dataset.name;
+            document.getElementById("cardDesc").textContent = this.dataset.desc;
         });
     }
     // Original code from https://www.w3schools.com/howto/howto_js_accordion.asp
@@ -59,7 +61,7 @@ function displayDeck(list, type) {
       for (let z=0; z < list.length; z++) {
         if (list[z].type == type) {
             string += `
-        <div class="cardInfo" data-name="${list[z].name}"><img src=${list[z].src}><p>${list[z].desc}</p></div>`
+        <div class="cardInfo" data-name="${list[z].name}" data-desc="${list[z].desc}"><img src=${list[z].src}></div>`
         }
       }
       return string;
