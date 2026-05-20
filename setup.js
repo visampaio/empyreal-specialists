@@ -57,7 +57,7 @@ function createDisplay(){
 }
 
 function displayDeck(list, type) {
-    let string = `<button class="accordion">${type}</button><div class="cardDisplay">`;
+    let string = `<button class="accordion"><img src="./img/${type}_logo.png">${type}</button><div class="cardDisplay">`;
       for (let z=0; z < list.length; z++) {
         if (list[z].type == type) {
             string += `
