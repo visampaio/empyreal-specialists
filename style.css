@@ -57,7 +57,7 @@ html {
 
 body {
   font-family: "Open Sans", sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 	line-height: 1.5em;
   width: 80%;
   margin: 10px auto;
@@ -71,6 +71,7 @@ select {
 
 img {
     max-width: 100%;
+    width: 354px;
 }
 
 button {
@@ -89,6 +90,7 @@ button {
 
 .cardDisplay {
     display: none;
+    text-align: center;
 }
 
 #modal {
@@ -108,4 +110,12 @@ button {
         margin: 40% auto;
         padding: 5%;
         width: 80%;
+}
+
+#cardName {
+    font-weight: 600;
+}
+
+#cardDesc {
+    margin-bottom: 20px;
 }
