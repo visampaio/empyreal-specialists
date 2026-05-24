@@ -54,6 +54,11 @@ function createDisplay(){
             toggleAccordion(panel);
         });
     }
+
+    document.getElementById("oops").innerHTML = "";
+    if (removedDeck.length >= 1) {
+        document.getElementById("oops").innerHTML +=`<span  class="accordion" onclick="goBack();">🙊 ${removedDeck.length}</span>`;
+    }
 }
 
 function displayDeck(list, type) {
@@ -64,6 +69,7 @@ function displayDeck(list, type) {
         <div class="cardInfo" data-name="${list[z].name}" data-desc="${list[z].desc}"><img src=${list[z].src}></div>`
         }
       }
+      string+= `<span onclick="createDisplay();">🙊</span>`;
       return string;
 }
 
@@ -76,7 +82,30 @@ selectYes.addEventListener("click", function() {
         }
     }
     createDisplay();
-});
+})
+
+function goBack() {
+    gameDeck.push(removedDeck[removedDeck.length - 1]);
+    let type = removedDeck[removedDeck.length - 1].type;
+    removedDeck.pop();
+    createDisplay();
+    let accordions = document.getElementsByClassName("accordion");
+    for (let i = 0; i < accordions.length; i++) {
+        accordions[i].style.display = "none";
+    }
+    let panels = document.getElementsByClassName("cardDisplay");
+    switch(type) {
+        case "Engineers":
+            toggleAccordion(panels[0]);
+            break;
+        case "Surveyors":
+            toggleAccordion(panels[1]);
+            break;
+        case "Station Masters":
+            toggleAccordion(panels[2]);
+            break;
+    }
+}
 
 document.getElementById("selectNo").addEventListener("click", function() {
     modal.style.display = "none";

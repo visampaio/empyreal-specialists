@@ -84,6 +84,10 @@ button {
     margin-bottom: 50px;
 }
 
+#oops {
+    text-align: center;
+}
+
 .accordion {
     width: 100%;
 }
