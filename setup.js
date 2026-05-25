@@ -1,6 +1,7 @@
 const numPlayers = document.getElementById("numPlayers");
 const startDiv = document.getElementById("startDiv");
 const start = document.getElementById("startGame");
+const settings = document.getElementById("setSettings");
 const specialistList = document.getElementById("specialistList");
 const modal = document.getElementById("modal");
 let gameDeck = [];
@@ -13,6 +14,7 @@ start.addEventListener("click", function() {
     createDeck(surveyors);
     createDeck(stationMasters);
     createDisplay();
+    document.getElementById("settings").style.display = "none";
 });
 
 function createDeck(array) {
@@ -124,5 +126,51 @@ function toggleAccordion(panel){
       panel.style.display = "none";
     } else {
       panel.style.display = "block";
+    }
+}
+
+settings.addEventListener("click", function() {
+    let string = displaySettings(engineers, "Engineers");
+    string += displaySettings(surveyors, "Surveyors");
+    string += displaySettings(stationMasters, "Station Masters");
+    document.getElementById("settings").innerHTML = string;
+
+    let checkboxes = document.getElementsByTagName("input");
+    for (let i=0; i < checkboxes.length; i++) {
+        checkboxes[i].addEventListener("change", function() {
+            switch (this.parentElement.dataset.target) {
+                case "Engineers":
+                    toggleBan(engineers, this.name, this.checked);
+                    break;
+                case "Surveyors":
+                    toggleBan(surveyors, this.textContent, this.checked);
+                    break;
+                case "Station Masters":
+                    toggleBan(stationMasters, this.textContent, this.checked);
+                    break;
+            }
+        });
+    }
+})
+
+function displaySettings(array, type) {
+    let string = `<div data-target=${type}><h1>${type}</h1>`;
+    for (let i = 0; i < array.length; i++) {
+        string += `<input id="${type}${i}" name="${array[i].name}" type="checkbox" ${array[i].isBanned ? "checked" : ""}><label for="${type}${i}">${array[i].name}</label>`;
+    }
+    string += `</div>`
+    return string;
+}
+
+function toggleBan(array, card, state) {
+    for (let i = 0; i < array.length; i++) {
+        if (array[i].name == card) {
+            if(state) {
+                array[i].isBanned = true;
+            }
+            else {
+                array[i].isBanned = false;
+            }
+        }
     }
 }
