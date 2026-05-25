@@ -5,18 +5,27 @@ const start = document.getElementById("startGame");
 const settings = document.getElementById("setSettings");
 const specialistList = document.getElementById("specialistList");
 const modal = document.getElementById("modal");
+const endGame = document.getElementById("endGame");
 let gameDeck = [];
 let removedDeck = [];
 let cardInfo = document.getElementsByClassName("cardInfo");
 let selectYes = document.getElementById("selectYes");
 let aggroLevel = document.getElementById("aggroLevel");
 
+if (localStorage.getItem("gameDeck") !== null) {
+    gameDeck = JSON.parse(localStorage.getItem("gameDeck"));
+    removedDeck = JSON.parse(localStorage.getItem("removedDeck"));
+    createDisplay();
+    document.getElementById("endGameDiv").style.display = "block";
+}
+
 start.addEventListener("click", function() {
     createDeck(engineers);
     createDeck(surveyors);
     createDeck(stationMasters);
     createDisplay();
-    document.getElementById("settings").style.display = "none";
+    document.getElementById("settingsDiv").style.display = "none";
+    document.getElementById("endGameDiv").style.display = "block";
 });
 
 function createDeck(array) {
@@ -46,6 +55,8 @@ function createDisplay(){
             document.getElementById("cardDesc").textContent = this.dataset.desc;
         });
     }
+    localStorage.setItem("gameDeck", JSON.stringify(gameDeck));
+    localStorage.setItem("removedDeck", JSON.stringify(removedDeck));
     // Original code from https://www.w3schools.com/howto/howto_js_accordion.asp
     let accordions = document.getElementsByClassName("accordion");
 
@@ -145,6 +156,7 @@ function createSettingsDisplay() {
     let checkboxes = document.getElementsByTagName("input");
     for (let i=0; i < checkboxes.length; i++) {
         checkboxes[i].addEventListener("change", function() {
+            aggroLevel.value = "";
             switch (this.parentElement.dataset.target) {
                 case "Engineers":
                     toggleBan(engineers, this.name, this.checked);
@@ -208,4 +220,8 @@ function isAggro(card) {
 
 aggroLevel.addEventListener("change", function() {
     createSettingsDisplay();
+})
+
+endGame.addEventListener("click", function() {
+    localStorage.clear();
 })

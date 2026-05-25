@@ -88,6 +88,10 @@ button {
     text-align: center;
 }
 
+#endGameDiv {
+    display: none;
+}
+
 .accordion {
     width: 100%;
 }
