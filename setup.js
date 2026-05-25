@@ -1,5 +1,6 @@
 const numPlayers = document.getElementById("numPlayers");
 const startDiv = document.getElementById("startDiv");
+const settingsDiv = document.getElementById("settingsDiv");
 const start = document.getElementById("startGame");
 const settings = document.getElementById("setSettings");
 const specialistList = document.getElementById("specialistList");
@@ -8,6 +9,7 @@ let gameDeck = [];
 let removedDeck = [];
 let cardInfo = document.getElementsByClassName("cardInfo");
 let selectYes = document.getElementById("selectYes");
+let aggroLevel = document.getElementById("aggroLevel");
 
 start.addEventListener("click", function() {
     createDeck(engineers);
@@ -130,10 +132,15 @@ function toggleAccordion(panel){
 }
 
 settings.addEventListener("click", function() {
+    createSettingsDisplay();
+})
+
+function createSettingsDisplay() {
     let string = displaySettings(engineers, "Engineers");
     string += displaySettings(surveyors, "Surveyors");
     string += displaySettings(stationMasters, "Station Masters");
     document.getElementById("settings").innerHTML = string;
+    settingsDiv.style.display = "block";
 
     let checkboxes = document.getElementsByTagName("input");
     for (let i=0; i < checkboxes.length; i++) {
@@ -151,11 +158,12 @@ settings.addEventListener("click", function() {
             }
         });
     }
-})
+}
 
 function displaySettings(array, type) {
     let string = `<div data-target=${type}><h1>${type}</h1>`;
     for (let i = 0; i < array.length; i++) {
+        array[i].isBanned = isAggro(array[i]);
         string += `<input id="${type}${i}" name="${array[i].name}" type="checkbox" ${array[i].isBanned ? "checked" : ""}><label for="${type}${i}">${array[i].name}</label>`;
     }
     string += `</div>`
@@ -174,3 +182,30 @@ function toggleBan(array, card, state) {
         }
     }
 }
+
+function isAggro(card) {
+    let aggro = aggroLevel.value;
+    switch(aggro) {
+        case "high":
+            return false;
+            break;
+        case "medium":
+            if (card.aggression == "high") {
+                return true;
+            }
+            else { return false; }
+            break;
+        case "low" :
+            if (card.aggression == "high" || card.aggression == "medium") {
+                return true;
+            }
+            else { return false; }
+        default:
+            return card.isBanned;
+            break;
+    }
+}
+
+aggroLevel.addEventListener("change", function() {
+    createSettingsDisplay();
+})

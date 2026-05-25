@@ -9,11 +9,14 @@
   <body>
     <div id="startDiv">
         <label for="numPlayers">Select number of players:</label>
-        <select name="numPlayers" id="numPlayers">
+        <select id="numPlayers">
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
         </select>
         <button id="startGame">Start</button>
         <button id="setSettings">Settings</button>
@@ -26,7 +29,19 @@
     </div>
     <div id="oops"></div>
 
-    <div id="settings"></div>
+    <div id="settingsDiv">
+        <div>
+        <label for="aggroLevel">Aggression level:</label>
+        <select id="aggroLevel" >
+            <option value="">Custom</option>
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+        </select>
+    </div>
+    <div id="settings">
+    </div>
+    </div>
 
     <div id="modal">
         <div class="modalContent">

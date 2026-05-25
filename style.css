@@ -123,3 +123,7 @@ button {
 #cardDesc {
     margin-bottom: 20px;
 }
+
+#settingsDiv {
+    display: none;
+}
