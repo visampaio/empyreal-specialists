@@ -159,7 +159,7 @@ function createSettingsDisplay() {
     for (let i=0; i < checkboxes.length; i++) {
         checkboxes[i].addEventListener("change", function() {
             aggroLevel.value = "";
-            switch (this.parentElement.dataset.target) {
+            switch (this.parentElement.parentElement.dataset.target) {
                 case "Engineers":
                     toggleBan(engineers, this.name, this.checked);
                     break;
@@ -226,4 +226,5 @@ aggroLevel.addEventListener("change", function() {
 
 endGame.addEventListener("click", function() {
     localStorage.clear();
+    window.location.href = window.location.href;
 })
