@@ -78,10 +78,23 @@ button {
     font-size: inherit;
     width: 50%;
     padding: 15px 10px;
+    margin: 10px 0;
+}
+
+button, select, .modalContent {
+    border: 2px solid #918e85;
+    border-radius: 15px;
 }
 
 #startDiv {
-    margin-bottom: 50px;
+    text-align: center;
+    margin-top: 25px;
+}
+
+#numPlayers {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
 }
 
 .oops {
