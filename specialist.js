@@ -262,28 +262,28 @@ let surveyors = [
     {
         name: "Marigold",
         src: "./img/marigold.png",
-        desc: "",
+        desc: "Gain Spellcar. Refresh Mana or Gain Mana. Gain Specialist or Refresh Specialists.",
         isBanned: false,
         type: "Surveyors"
     },
     {
         name: "Tezola Telmorre",
         src: "./img/tezola_telmorre.png",
-        desc: "",
+        desc: "When it is your turn to make a final delivery at the end of the game, deliver three types of Goods instead of one. You are eligible for a Demand Tile for each of these deliveries.",
         isBanned: false,
         type: "Surveyors"
     },
     {
         name: "Milton Barts",
         src: "./img/milton_barts.png",
-        desc: "",
+        desc: "Gain Spellcar twice, then Activate them both for free. (You must pay any inherent costs.)",
         isBanned: false,
         type: "Surveyors"
     },
     {
         name: "Wardlaw O'Brien",
         src: "./img/wardlaw_obrien.png",
-        desc: "",
+        desc: "Swap the position of any two Demand Tiles on the map. Do this up to two times. To claim one of these swapped Demand Tiles, ignore the City color and Deliver Goods that match the tile’s color.",
         isBanned: false,
         aggression: "medium",
         type: "Surveyors"
@@ -291,14 +291,14 @@ let surveyors = [
     {
         name: "Mindra Dirac",
         src: "./img/mindra_dirac.png",
-        desc: "",
+        desc: "Choose a hex in your Network. Build Track on each adjacent hex (if able).",
         isBanned: false,
         type: "Surveyors"
     },
     {
         name: "Welsie Acktern",
         src: "./img/welsie_acktern.png",
-        desc: "",
+        desc: "Build Track on any terrain (except Wasteland) anywhere on the map. Then Build Track on any Home Terrain adjacent to that hex.",
         isBanned: false,
         type: "Surveyors"
     },
@@ -315,35 +315,35 @@ let stationMasters = [
     {
         name: "Antine Frass",
         src: "./img/antine_frass.png",
-        desc: "",
+        desc: "Whenever you Build Track, City Transfers are free.",
         isBanned: false,
         type: "Station Masters"
     },
     {
         name: "Iain Bergham",
         src: "./img/iain_bergham.png",
-        desc: "",
+        desc: "Each time an opponent Builds Track on a hex where you have a train car, Reclaim 2 Mana.",
         isBanned: false,
         type: "Station Masters"
     },
     {
         name: "Clive Melmont",
         src: "./img/clive_melmont.png",
-        desc: "",
+        desc: "uring the Activate Specialists phase of your turn, Reclaim 1 Mana.",
         isBanned: false,
         type: "Station Masters"
     },
     {
         name: "Irini Grenhart",
         src: "./img/irini_grenhart.png",
-        desc: "",
+        desc: "Whenever you Build Track, Competitor Transfers cost only 1 Mana.",
         isBanned: false,
         type: "Station Masters"
     },
     {
         name: "Dareios Kuel",
         src: "./img/dareios_kuel.png",
-        desc: "",
+        desc: "During the Activate Specialists phase of your turn, you may Return two In-Network Goods to the supply then Gain Mana.",
         isBanned: false,
         aggression: "high",
         type: "Station Masters"
@@ -351,22 +351,36 @@ let stationMasters = [
     {
         name: "Leto Fulgore",
         src: "./img/leto_fulgore.png",
-        desc: "",
+        desc: "When you Deliver at the End of the Line, you may Gain Mana.",
         isBanned: false,
         type: "Station Masters"
     },
     {
         name: "Feylana Chorgitz",
         src: "./img/feylana_chorgitz.png",
-        desc: "",
+        desc: "During the Activate Specialists phase of your turn, you may pay 1 Mana to return an In- Network Good to the supply, then Refresh your Engineer.",
         isBanned: false,
         aggression: "medium",
         type: "Station Masters"
     },
     {
+        name: "Levine Casterlie",
+        src: "./img/levine_casterlie.png",
+        desc: "When you Move + Activate, your second Spellcar Activation is free, and your third Spellcar Activation costs 1 Mana. (You must pay any inherent costs.)",
+        isBanned: false,
+        type: "Station Masters"
+    },
+    {
+        name: "Hai of Noirwood",
+        src: "./img/hai_noirwood.png",
+        desc: "You may claim Demand tiles worth 1 more than you qualify for when you Deliver at the End of the Line.",
+        isBanned: false,
+        type: "Station Masters"
+    },
+    {
         name: "Lucca Turlotte",
         src: "./img/lucca_turlotte.png",
-        desc: "",
+        desc: "During the Activate Specialists phase of your turn, you may pay 2 Mana to return two In- Network Good to the supply, then Refresh your Captain.",
         isBanned: false,
         aggression: "high",
         type: "Station Masters"
@@ -374,14 +388,14 @@ let stationMasters = [
     {
         name: "Nicomedes An'sige",
         src: "./img/nicomedes_ansige.png",
-        desc: "",
+        desc: "When you Administrate, you may Deliver one Good.",
         isBanned: false,
         type: "Station Masters"
     },
     {
         name: "Tegusgan",
         src: "./img/tegusgan.png",
-        desc: "",
+        desc: "During the Activate Specialists phase of your turn, you may pay 2 Mana to return two In-Network Good to the supply then Build Track on any terrain (except Wasteland).",
         isBanned: false,
         aggression: "high",
         type: "Station Masters"
@@ -389,56 +403,56 @@ let stationMasters = [
     {
         name: "Peril",
         src: "./img/peril.png",
-        desc: "",
+        desc: "Instead of Activating after you Move your Conductor, you may Activate then Move. Moving to the End of Line this way moves you back to Start without delivering.",
         isBanned: false,
         type: "Station Masters"
     },
     {
         name: "Tzart Kargan",
         src: "./img/tzart_kargan.png",
-        desc: "",
+        desc: "When you Administrate, you may Build Track in your Home Terrain.",
         isBanned: false,
         type: "Station Masters"
     },
     {
         name: "Quadrana Sekten",
         src: "./img/quadrana_sekten.png",
-        desc: "",
+        desc: "Whenever you Deliver, if you can Deliver enough Goods to fulfill more than one demand, you may claim more than one Demand Tile.",
         isBanned: false,
         type: "Station Masters"
     },
     {
         name: "Viona Larone",
         src: "./img/viona_larone.png",
-        desc: "",
+        desc: "When you Move + Activate, you may pay 1 Mana to Activate a single Spellcar twice. You may not Activate any other Spellcars this turn. (You must pay any inherent costs.)",
         isBanned: false,
         type: "Station Masters"
     },
     {
         name: "Sanathes Danah",
         src: "./img/sanathes_danah.png",
-        desc: "",
+        desc: "Whenever you Build Track, Wasteland Transfers cost only 1 Mana.",
         isBanned: false,
         type: "Station Masters"
     },
     {
         name: "Voco Astrum",
         src: "./img/voco_astrum.png",
-        desc: "",
+        desc: "If you Deliver at the End of the Line without taking a Demand Tile, add two Goods from the supply to your folio. These Goods must match the color of a City connected to your Network.",
         isBanned: false,
         type: "Station Masters"
     },
     {
         name: "Simon La Faucheuse",
         src: "./img/simon_faucheuse.png",
-        desc: "",
+        desc: "Moving your Conductor one or two spaces is free. Moving three spaces costs2 Mana. Moving four spaces costs 4 Mana.",
         isBanned: false,
         type: "Station Masters"
     },
     {
         name: "Wilhelm Barts",
         src: "./img/wilhelm_barts.png",
-        desc: "",
+        desc: "When you Administrate, Gain Spellcar.",
         isBanned: false,
         type: "Station Masters"
     },
