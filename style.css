@@ -71,7 +71,7 @@ select {
 
 img {
     max-width: 100%;
-    width: 354px;
+    width: 300px;
 }
 
 button {
@@ -84,16 +84,20 @@ button {
     margin-bottom: 50px;
 }
 
-#oops {
+.oops {
     text-align: center;
+    margin: 50px auto 20px;
 }
 
 #endGameDiv {
     display: none;
+    text-align: center;
 }
 
 .accordion {
     width: 100%;
+    background: transparent;
+    border: none;
 }
 
 .cardDisplay {
@@ -120,6 +124,11 @@ button {
         width: 80%;
 }
 
+.modalContent button {
+    width: 35%;
+    margin-right: 10%;
+}
+
 #cardName {
     font-weight: 600;
 }
@@ -130,4 +139,26 @@ button {
 
 #settingsDiv {
     display: none;
+}
+
+#settings h1 {
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin: 15px auto 10px;
+}
+
+#settings input[type="checkbox"] {
+    visibility: hidden;
+}
+
+#settings label {
+    display: block  ;
+}
+
+#settings label::before {
+    content: "\02705";
+}
+
+#settings label:has(input:checked)::before {
+    content: "\0274C";
 }

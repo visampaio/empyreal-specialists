@@ -65,6 +65,7 @@ function createDisplay(){
             for (let i = 0; i < accordions.length; i++) {
                 accordions[i].style.display = "none";
             }
+            document.getElementById("endGameDiv").style.display = "none";
             let panel = this.nextElementSibling;
             toggleAccordion(panel);
         });
@@ -74,6 +75,7 @@ function createDisplay(){
     if (removedDeck.length >= 1) {
         document.getElementById("oops").innerHTML +=`<span  class="accordion" onclick="goBack();">🙊 ${removedDeck.length}</span>`;
     }
+    document.getElementById("endGameDiv").style.display = "block";
 }
 
 function displayDeck(list, type) {
@@ -84,7 +86,7 @@ function displayDeck(list, type) {
         <div class="cardInfo" data-name="${list[z].name}" data-desc="${list[z].desc}"><img src=${list[z].src}></div>`
         }
       }
-      string+= `<span onclick="createDisplay();">🙊</span>`;
+      string+= `<div class="oops" onclick="createDisplay();">🙊</div>`;
       return string;
 }
 
@@ -176,7 +178,7 @@ function displaySettings(array, type) {
     let string = `<div data-target=${type}><h1>${type}</h1>`;
     for (let i = 0; i < array.length; i++) {
         array[i].isBanned = isAggro(array[i]);
-        string += `<input id="${type}${i}" name="${array[i].name}" type="checkbox" ${array[i].isBanned ? "checked" : ""}><label for="${type}${i}">${array[i].name}</label>`;
+        string += `<label for="${type}${i}"><input id="${type}${i}" name="${array[i].name}" type="checkbox" ${array[i].isBanned ? "checked" : ""}>${array[i].name}</label>`;
     }
     string += `</div>`
     return string;
