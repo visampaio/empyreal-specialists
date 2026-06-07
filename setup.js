@@ -170,10 +170,10 @@ function createSettingsDisplay() {
                     toggleBan(engineers, this.name, this.checked);
                     break;
                 case "Surveyors":
-                    toggleBan(surveyors, this.textContent, this.checked);
+                    toggleBan(surveyors, this.name, this.checked);
                     break;
                 case "Station Masters":
-                    toggleBan(stationMasters, this.textContent, this.checked);
+                    toggleBan(stationMasters, this.name, this.checked);
                     break;
             }
         });
@@ -181,7 +181,7 @@ function createSettingsDisplay() {
 }
 
 function displaySettings(array, type) {
-    let string = `<div data-target=${type}><h1>${type}</h1>`;
+    let string = `<div data-target="${type}"><h1>${type}</h1>`;
     for (let i = 0; i < array.length; i++) {
         array[i].isBanned = isAggro(array[i]);
         string += `<label for="${type}${i}"><input id="${type}${i}" name="${array[i].name}" type="checkbox" ${array[i].isBanned ? "checked" : ""}>${array[i].name}</label>`;
