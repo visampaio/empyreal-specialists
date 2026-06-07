@@ -53,6 +53,7 @@ function createDisplay(){
             selectYes.dataset.target = this.dataset.name;
             document.getElementById("cardName").textContent = this.dataset.name;
             document.getElementById("cardDesc").textContent = this.dataset.desc;
+            document.getElementById("question").textContent = "Do you want to select this character?";
         });
     }
     localStorage.setItem("gameDeck", JSON.stringify(gameDeck));
@@ -92,13 +93,18 @@ function displayDeck(list, type) {
 
 selectYes.addEventListener("click", function() {
     modal.style.display = "none";
-    for (let i=0; i < gameDeck.length; i++) {
-        if (gameDeck[i].name == this.dataset.target) {
-            removedDeck.push(gameDeck[i]);
-            gameDeck.splice(i, 1);
-        }
+    if (this.dataset.target == "end") {
+        resetGame();
     }
-    createDisplay();
+    else {
+        for (let i=0; i < gameDeck.length; i++) {
+            if (gameDeck[i].name == this.dataset.target) {
+                removedDeck.push(gameDeck[i]);
+                gameDeck.splice(i, 1);
+            }
+        }
+        createDisplay();
+    }
 })
 
 function goBack() {
@@ -225,6 +231,14 @@ aggroLevel.addEventListener("change", function() {
 })
 
 endGame.addEventListener("click", function() {
+    modal.style.display = "block";
+    selectYes.dataset.target = "end";
+    document.getElementById("cardName").textContent = "";
+    document.getElementById("cardDesc").textContent = "";
+    document.getElementById("question").textContent = "Do you want to end the game?";
+})
+
+function resetGame() {
     localStorage.clear();
     window.location.href = window.location.href;
-})
+}
