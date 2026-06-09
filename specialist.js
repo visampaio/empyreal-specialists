@@ -4,7 +4,8 @@ let engineers = [
         src: "./img/fendar_duskshadow.png",
         desc: "Build Track on a hex on the edge of the map.",
         isBanned: false,
-        type: "Engineers"
+        type: "Engineers",
+        isExpansion: true
     },
     {
         name: "Adelaide Chivers",
@@ -82,7 +83,8 @@ let engineers = [
         src: "./img/lynssara_yuuno.png",
         desc: "Pay two Crystals to Build Track on any terrain (except Wasteland) anywhere on the map that does not have a Good on it.",
         isBanned: false,
-        type: "Engineers"
+        type: "Engineers",
+        isExpansion: true
     },
     {
         name: "Orman Kaspar",
@@ -125,7 +127,8 @@ let engineers = [
         src: "./img/megana_dalevan.png",
         desc: "Pay two Crystals to choose a Network-Adjacent Hex. Treat one hex adjacent to it as In-Network for this turn. (Hexes adjacent to it are considered Network-Adjacent.)",
         isBanned: false,
-        type: "Engineers"
+        type: "Engineers",
+        isExpansion: true
     },
     {
         name: "Uumi Nuoc",
@@ -139,7 +142,8 @@ let engineers = [
         src: "./img/nilara_torn.png",
         desc: "Pay two Crystals to copy the effect of an opponent's face-up Captain. You do not have to pay any costs to Activate that Captain. That Captain is not Exhausted by the action.",
         isBanned: false,
-        type: "Engineers"
+        type: "Engineers",
+        isExpansion: true
     },
     {
         name: "Wendy Thristle",
@@ -156,15 +160,16 @@ let surveyors = [
         src: "./img/amaranthalos.png",
         desc: "Each other player must slide a Demand Tile off of their folio. They will use it for points and Awards, but it no longer counts towards triggering game end.",
         isBanned: false,
-        type: "Surveyors"
+        type: "Surveyors",
+        isExpansion: true
     },
-    {
-        name: "Aella Ivaline Dran'hei",
-        src: "./img/aella_ivaline_dranhei.png",
-        desc: "Draw three Station Masters from the supply. Choose one and put it into play over Aella. Return the other two for the supply.",
-        isBanned: false,
-        type: "Surveyors"
-    },
+    // {
+    //     name: "Aella Ivaline Dran'hei",
+    //     src: "./img/aella_ivaline_dranhei.png",
+    //     desc: "Draw three Station Masters from the supply. Choose one and put it into play over Aella. Return the other two for the supply.",
+    //     isBanned: false,
+    //     type: "Surveyors"
+    // },
     {
         name: "Cin Atalar",
         src: "./img/cin_atalar.png",
@@ -206,7 +211,8 @@ let surveyors = [
         src: "./img/arianna_tzaar.png",
         desc: "Draw three Awards from the supply. You may choose one and put it into play. (Return the other two to the supply.) The chosen Awaard is scored the same as the two drawn at the beggining of the game.",
         isBanned: false,
-        type: "Surveyors"
+        type: "Surveyors",
+        isExpansion: true
     },
     {
         name: "Hikaru Sorayama",
@@ -264,14 +270,16 @@ let surveyors = [
         src: "./img/marigold.png",
         desc: "Gain Spellcar. Refresh Mana or Gain Mana. Gain Specialist or Refresh Specialists.",
         isBanned: false,
-        type: "Surveyors"
+        type: "Surveyors",
+        isExpansion: true
     },
     {
         name: "Tezola Telmorre",
         src: "./img/tezola_telmorre.png",
         desc: "When it is your turn to make a final delivery at the end of the game, deliver three types of Goods instead of one. You are eligible for a Demand Tile for each of these deliveries.",
         isBanned: false,
-        type: "Surveyors"
+        type: "Surveyors",
+        isExpansion: true
     },
     {
         name: "Milton Barts",
@@ -310,7 +318,8 @@ let stationMasters = [
         src: "./img/casparan_kellovich.png",
         desc: "Each time you Build Track on the edge of the map, Reclaim two Mana.",
         isBanned: false,
-        type: "Station Masters"
+        type: "Station Masters",
+        isExpansion: true
     },
     {
         name: "Antine Frass",
@@ -324,7 +333,8 @@ let stationMasters = [
         src: "./img/iain_bergham.png",
         desc: "Each time an opponent Builds Track on a hex where you have a train car, Reclaim 2 Mana.",
         isBanned: false,
-        type: "Station Masters"
+        type: "Station Masters",
+        isExpansion: true
     },
     {
         name: "Clive Melmont",
@@ -419,7 +429,8 @@ let stationMasters = [
         src: "./img/quadrana_sekten.png",
         desc: "Whenever you Deliver, if you can Deliver enough Goods to fulfill more than one demand, you may claim more than one Demand Tile.",
         isBanned: false,
-        type: "Station Masters"
+        type: "Station Masters",
+        isExpansion: true
     },
     {
         name: "Viona Larone",
@@ -454,6 +465,7 @@ let stationMasters = [
         src: "./img/wilhelm_barts.png",
         desc: "When you Administrate, Gain Spellcar.",
         isBanned: false,
-        type: "Station Masters"
+        type: "Station Masters",
+        isExpansion: true
     },
 ];

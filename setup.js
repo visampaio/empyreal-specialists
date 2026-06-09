@@ -11,6 +11,7 @@ let removedDeck = [];
 let cardInfo = document.getElementsByClassName("cardInfo");
 let selectYes = document.getElementById("selectYes");
 let aggroLevel = document.getElementById("aggroLevel");
+let expansion = document.getElementById("expansion");
 
 if (localStorage.getItem("gameDeck") !== null) {
     gameDeck = JSON.parse(localStorage.getItem("gameDeck"));
@@ -34,6 +35,7 @@ function createDeck(array) {
     for (let i=0; i< Number(numPlayers.value)+1;) {
         let j = Math.floor(Math.random() * list.length);
         let cardPicked = list[j];
+        cardPicked.isBanned = updateBanStatus(cardPicked);
         if (!cardPicked.isBanned) {
             gameDeck.push(cardPicked);
             list.splice(j, 1);
@@ -183,11 +185,18 @@ function createSettingsDisplay() {
 function displaySettings(array, type) {
     let string = `<div data-target="${type}"><h1>${type}</h1>`;
     for (let i = 0; i < array.length; i++) {
-        array[i].isBanned = isAggro(array[i]);
-        string += `<label for="${type}${i}"><input id="${type}${i}" name="${array[i].name}" type="checkbox" ${array[i].isBanned ? "checked" : ""}>${array[i].name}</label>`;
+        array[i].isBanned = updateBanStatus(array[i]);
+        if (inBannedExpansion(array[i])) {
+            continue;
+        }
+        string += `<label for="${type}${i}"><input id="${type}${i}" name="${array[i].name}" type="checkbox" ${array[i].isBanned ? "checked" : ""}>${array[i].name} ${array[i].isExpansion ? "‼️" : ""}</label>`;
     }
     string += `</div>`
     return string;
+}
+
+function updateBanStatus(card) {
+    return isAggro(card) || inBannedExpansion(card);
 }
 
 function toggleBan(array, card, state) {
@@ -195,9 +204,11 @@ function toggleBan(array, card, state) {
         if (array[i].name == card) {
             if(state) {
                 array[i].isBanned = true;
+                array[i].custom = true;
             }
             else {
                 array[i].isBanned = false;
+                array[i].custom = false;
             }
         }
     }
@@ -221,12 +232,30 @@ function isAggro(card) {
             }
             else { return false; }
         default:
-            return card.isBanned;
+            if (card.custom == true) { return true; }
+            else { return false; }
             break;
     }
 }
 
 aggroLevel.addEventListener("change", function() {
+    createSettingsDisplay();
+})
+
+function inBannedExpansion(card) {
+    let choice = expansion.value;
+    if (choice == "yes") {
+        return false;
+    }
+    else {
+        if (card.isExpansion) {
+                return true;
+        }
+        else { return false; }
+    }
+}
+
+expansion.addEventListener("change", function() {
     createSettingsDisplay();
 })
 
