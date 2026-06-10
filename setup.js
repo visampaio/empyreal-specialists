@@ -1,6 +1,7 @@
 const numPlayers = document.getElementById("numPlayers");
 const startDiv = document.getElementById("startDiv");
 const settingsDiv = document.getElementById("settingsDiv");
+const lastSelected = document.getElementById("lastSelected");
 const start = document.getElementById("startGame");
 const settings = document.getElementById("setSettings");
 const specialistList = document.getElementById("specialistList");
@@ -61,15 +62,18 @@ function createDisplay(){
     }
     localStorage.setItem("gameDeck", JSON.stringify(gameDeck));
     localStorage.setItem("removedDeck", JSON.stringify(removedDeck));
+    if (removedDeck.length > 0) { lastSelected.textContent = removedDeck[removedDeck.length - 1].type.slice(0, -1) + ": " + removedDeck[removedDeck.length - 1].name; }
     // Original code from https://www.w3schools.com/howto/howto_js_accordion.asp
     let accordions = document.getElementsByClassName("accordion");
 
     for (let i = 0; i < accordions.length; i++) {
         accordions[i].addEventListener("click", function () {
+            window.scrollTo(0, 0);
             for (let i = 0; i < accordions.length; i++) {
                 accordions[i].style.display = "none";
             }
             document.getElementById("endGameDiv").style.display = "none";
+            lastSelected.textContent = "";
             let panel = this.nextElementSibling;
             toggleAccordion(panel);
         });
@@ -103,6 +107,7 @@ selectYes.addEventListener("click", function() {
         for (let i=0; i < gameDeck.length; i++) {
             if (gameDeck[i].name == this.dataset.target) {
                 removedDeck.push(gameDeck[i]);
+                lastSelected.textContent = removedDeck[removedDeck.length - 1].type.slice(0, -1) + ": " + removedDeck[removedDeck.length - 1].name;
                 gameDeck.splice(i, 1);
             }
         }
@@ -111,10 +116,12 @@ selectYes.addEventListener("click", function() {
 })
 
 function goBack() {
+    window.scrollTo(0, 0);
     gameDeck.push(removedDeck[removedDeck.length - 1]);
     let type = removedDeck[removedDeck.length - 1].type;
     removedDeck.pop();
     createDisplay();
+    lastSelected.textContent = "";
     let accordions = document.getElementsByClassName("accordion");
     for (let i = 0; i < accordions.length; i++) {
         accordions[i].style.display = "none";

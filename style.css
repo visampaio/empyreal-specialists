@@ -175,3 +175,7 @@ button, select, .modalContent {
 #settings label:has(input:checked)::before {
     content: "\0274C";
 }
+
+#lastSelected {
+    text-align: center;
+}
