@@ -45,6 +45,7 @@ function createDeck(array) {
 }
 
 function createDisplay(){
+    window.scrollTo(0, 0);
     specialistList.innerHTML = displayDeck(gameDeck, "Engineers");
     specialistList.innerHTML += displayDeck(gameDeck, "Surveyors");
     specialistList.innerHTML += displayDeck(gameDeck, "Station Masters");
@@ -153,7 +154,11 @@ function toggleAccordion(panel){
 }
 
 settings.addEventListener("click", function() {
-    createSettingsDisplay();
+    if (settingsDiv.style.display === "block") {
+      settingsDiv.style.display = "none";
+    } else {
+      createSettingsDisplay();
+    }
 })
 
 function createSettingsDisplay() {
